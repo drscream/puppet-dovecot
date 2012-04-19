@@ -13,8 +13,10 @@ class dovecot::base {
     fail 'Please provide either $dovecot_auth_ldap or $dovecot_auth_pam or $dovecot_auth_database'
   }
 
-  if ! ($dovecot_ldap_host or $dovecot_ldap_uri ) {
-    fail 'Please provide either $dovecot_ldap_host or $dovecot_ldap_uri'
+  if ($dovecot_auth_ldap) {
+    if ! ($dovecot_ldap_host or $dovecot_ldap_uri ) {
+      fail 'Please provide either $dovecot_ldap_host or $dovecot_ldap_uri'
+    }
   }
 
   include dovecot::params

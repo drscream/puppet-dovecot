@@ -6,8 +6,8 @@ class dovecot::params {
           default: { $version = 1}
         }
       }
-      CentOS: {
-        $version = 1
+      Ubuntu: {
+        $version = 2
       }
       default: { $version = 1 }
     }

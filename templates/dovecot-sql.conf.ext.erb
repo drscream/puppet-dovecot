@@ -5,7 +5,11 @@ driver = <%=dovecot_auth_database%>
 <% else -%>
 driver = mysql
 <% end -%>
+<% if has_variable?('dovecot_auth_database') and dovecot_auth_database = 'sqlite' -%>
+connect = <%=dovecot_sql_dbname%>
+<% else -%>
 connect = host=<%=dovecot_sql_host%> dbname=<%=dovecot_sql_dbname%> user=<%=dovecot_sql_user%> password=<%=dovecot_sql_password%>
+<% end -%>
 <% if has_variable?('dovecot_sql_user_query') -%>
 user_query = <%=dovecot_sql_user_query%>
 <% else -%>

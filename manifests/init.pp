@@ -48,7 +48,7 @@ SSL:
 AUTH:
   *$dovecot_auth_ldap* [OR]     tells dovecot to use some ldap backend for user auth (boolean)
   *$dovecot_auth_pam*  [OR]     tells dovecot to use pam for user auth (boolean)
-  *$dovecot_autoh_database*     tells dovecot to use either mysql or postgresl backend (string)
+  *$dovecot_auth_database*      tells dovecot to use either mysql or postgresl backend (string)
 
   IF you decide to use ldap, you can provide those informations:
     *$slapd_domain*                  ldap domain (mandatory, string)
@@ -75,6 +75,7 @@ AUTH:
 class dovecot {
   case $operatingsystem {
     Debian : { include dovecot::debian }
+	Ubuntu : { include dovecot::ubuntu }
     default: { fail "Nothing to do for $operatingsystem" }
   }
 }
